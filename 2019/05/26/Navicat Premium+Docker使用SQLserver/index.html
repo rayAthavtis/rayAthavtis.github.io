@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="以下为笔者各方面搜集资料整理所得，Navicat Premium及Docker下载安装过程略。 使用Docker运行容器印象 终端执行命令  123sudo docker run -e &amp;apos;ACCEPT_EULA=Y&amp;apos; -e &amp;apos;SA_PASSWORD=YourPassword&amp;apos; \   -p 1433:1433 --name sql1 \   -d mcr.m">
+<meta name="description" content="以下为笔者各方面搜集资料整理所得，Navicat Premium及Docker下载安装过程略。 使用Docker运行容器印象 终端执行命令  123sudo docker run -e &apos;ACCEPT_EULA=Y&apos; -e &apos;SA_PASSWORD=YourPassword&apos; \   -p 1433:1433 --name sql1 \   -d mcr.microsoft.com/mssql/s">
 <meta name="keywords" content="Navicat Premium,Docker,SQLserver,mac">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Navicat Premium+Docker使用SQLserver">
 <meta property="og:url" content="http://yoursite.com/2019/05/26/Navicat Premium+Docker使用SQLserver/index.html">
 <meta property="og:site_name" content="Vodka_青鹽">
-<meta property="og:description" content="以下为笔者各方面搜集资料整理所得，Navicat Premium及Docker下载安装过程略。 使用Docker运行容器印象 终端执行命令  123sudo docker run -e &amp;apos;ACCEPT_EULA=Y&amp;apos; -e &amp;apos;SA_PASSWORD=YourPassword&amp;apos; \   -p 1433:1433 --name sql1 \   -d mcr.m">
+<meta property="og:description" content="以下为笔者各方面搜集资料整理所得，Navicat Premium及Docker下载安装过程略。 使用Docker运行容器印象 终端执行命令  123sudo docker run -e &apos;ACCEPT_EULA=Y&apos; -e &apos;SA_PASSWORD=YourPassword&apos; \   -p 1433:1433 --name sql1 \   -d mcr.microsoft.com/mssql/s">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-22T08:36:12.714Z">
+<meta property="og:updated_time" content="2020-07-05T07:14:05.252Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Navicat Premium+Docker使用SQLserver">
-<meta name="twitter:description" content="以下为笔者各方面搜集资料整理所得，Navicat Premium及Docker下载安装过程略。 使用Docker运行容器印象 终端执行命令  123sudo docker run -e &amp;apos;ACCEPT_EULA=Y&amp;apos; -e &amp;apos;SA_PASSWORD=YourPassword&amp;apos; \   -p 1433:1433 --name sql1 \   -d mcr.m">
+<meta name="twitter:description" content="以下为笔者各方面搜集资料整理所得，Navicat Premium及Docker下载安装过程略。 使用Docker运行容器印象 终端执行命令  123sudo docker run -e &apos;ACCEPT_EULA=Y&apos; -e &apos;SA_PASSWORD=YourPassword&apos; \   -p 1433:1433 --name sql1 \   -d mcr.microsoft.com/mssql/s">
 
 
 
@@ -415,37 +415,37 @@
 <h2 id="使用Docker运行容器印象"><a href="#使用Docker运行容器印象" class="headerlink" title="使用Docker运行容器印象"></a>使用Docker运行容器印象</h2><ul>
 <li>终端执行命令</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run -e &apos;ACCEPT_EULA=Y&apos; -e &apos;SA_PASSWORD=YourPassword&apos; \</span><br><span class="line">   -p 1433:1433 --name sql1 \</span><br><span class="line">   -d mcr.microsoft.com/mssql/server:2017-latest</span><br></pre></td></tr></table></figure>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run -e <span class="string">'ACCEPT_EULA=Y'</span> -e <span class="string">'SA_PASSWORD=YourPassword'</span> \</span><br><span class="line">   -p 1433:1433 --name sql1 \</span><br><span class="line">   -d mcr.microsoft.com/mssql/server:2017-latest</span><br></pre></td></tr></table></figure>
 <p>（此处笔者使用的是2017-latest的镜像）</p>
 <h2 id="连接Navicat-Premium"><a href="#连接Navicat-Premium" class="headerlink" title="连接Navicat Premium"></a>连接Navicat Premium</h2><p>打开Navicat Premium，添加连接，按步骤输入用户名，端口等，开始测试，连接成功。之后基本可正常执行数据库各种操作。   </p>
 <p><strong>注意：</strong>因为是使用了Docker创建的容器，删除容器后数据库也一并被删除，因此删除容器前需手动备份数据库。</p>
 <h2 id="登录容器"><a href="#登录容器" class="headerlink" title="登录容器"></a>登录容器</h2><ul>
 <li>终端执行命令</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it sql1 /bin/bash</span><br></pre></td></tr></table></figure>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it sql1 /bin/bash</span><br></pre></td></tr></table></figure>
 <h2 id="连接sqlcmd"><a href="#连接sqlcmd" class="headerlink" title="连接sqlcmd"></a>连接sqlcmd</h2><ul>
 <li>容器内执行命令</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P &apos;YourPassword&apos;</span><br></pre></td></tr></table></figure>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P <span class="string">'YourPassword'</span></span><br></pre></td></tr></table></figure>
 <h2 id="使用-bak文件还原数据库"><a href="#使用-bak文件还原数据库" class="headerlink" title="使用.bak文件还原数据库"></a>使用.bak文件还原数据库</h2><p>以exam.bak文件为例，路径请根据自己的实际情况做修改。</p>
 <ul>
 <li>容器内创建文件夹（容器内执行）</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir /var/opt/mssql/backup</span><br></pre></td></tr></table></figure>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir /var/opt/mssql/backup</span><br></pre></td></tr></table></figure>
 <ul>
 <li>复制    .bak文件到容器（终端执行）</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker cp /Users/renlei/Downloads/exam.bak sql1:/var/opt/mssql/backup</span><br></pre></td></tr></table></figure>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker cp /Users/renlei/Downloads/exam.bak sql1:/var/opt/mssql/backup</span><br></pre></td></tr></table></figure>
 <ul>
 <li>运行sqlcmd到逻辑文件名称和备份内的路径的列表容器内（终端执行）</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker exec -it sql1 /opt/mssql-tools/bin/sqlcmd -S localhost  -U SA -P &apos;YourPassword&apos;  -Q &apos;RESTORE FILELISTONLY FROM DISK =  &quot;/var/opt/mssql/backup/exam.bak&quot;&apos;  | tr -s &apos; &apos; | cut -d &apos; &apos; -f 1-2</span><br></pre></td></tr></table></figure>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker <span class="built_in">exec</span> -it sql1 /opt/mssql-tools/bin/sqlcmd -S localhost  -U SA -P <span class="string">'YourPassword'</span>  -Q <span class="string">'RESTORE FILELISTONLY FROM DISK =  "/var/opt/mssql/backup/exam.bak"'</span>  | tr -s <span class="string">' '</span> | cut -d <span class="string">' '</span> -f 1-2</span><br></pre></td></tr></table></figure>
 <p>或者使用在你Navicat Premium中新建你想要恢复的数据库，新建查询</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">USE master</span><br><span class="line">RESTORE FILELISTONLY</span><br><span class="line">   FROM DISK = &apos;/var/opt/mssql/backup/exam.bak&apos; </span><br><span class="line">Go</span><br></pre></td></tr></table></figure>
 <ul>
 <li>还原数据库（终端执行）</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker exec -it sql1 /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P &apos;YourPassword&apos; -Q &apos;RESTORE DATABASE exam FROM DISK = &quot;/var/opt/mssql/backup/exam.bak&quot; WITH MOVE &quot;exam&quot; TO &quot;/var/opt/mssql/data/exam.mdf&quot;, MOVE &quot;exam_Log&quot; TO &quot;/var/opt/mssql/data/exam.ldf&quot;&apos;</span><br></pre></td></tr></table></figure>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker <span class="built_in">exec</span> -it sql1 /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P <span class="string">'YourPassword'</span> -Q <span class="string">'RESTORE DATABASE exam FROM DISK = "/var/opt/mssql/backup/exam.bak" WITH MOVE "exam" TO "/var/opt/mssql/data/exam.mdf", MOVE "exam_Log" TO "/var/opt/mssql/data/exam.ldf"'</span></span><br></pre></td></tr></table></figure>
 <p>或者新建查询</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">USE master</span><br><span class="line">RESTORE DATABASE exam </span><br><span class="line">   FROM DISK = &apos;/var/opt/mssql/backup/exam.bak&apos;</span><br><span class="line">   WITH MOVE &apos;exam&apos; TO &apos;/var/opt/mssql/data/exam.mdf&apos;, </span><br><span class="line">   MOVE &apos;exam_log&apos; TO &apos;/var/opt/mssql/data/exam.ldf&apos;</span><br><span class="line">GO</span><br></pre></td></tr></table></figure>
 <p>完成。</p>
@@ -455,7 +455,7 @@
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">STATS = 10, REPLACE</span><br><span class="line">GO</span><br></pre></td></tr></table></figure>
 <p>完成。</p>
-<h2 id="删除容器"><a href="#删除容器" class="headerlink" title="删除容器"></a>删除容器</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo docker stop sql1</span><br><span class="line">sudo docker rm sql1</span><br></pre></td></tr></table></figure>
+<h2 id="删除容器"><a href="#删除容器" class="headerlink" title="删除容器"></a>删除容器</h2><figure class="highlight zsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo docker stop sql1</span><br><span class="line">sudo docker rm sql1</span><br></pre></td></tr></table></figure>
 <p>简单介绍到这里，若有错处欢迎指正。</p>
 
       
